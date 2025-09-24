@@ -1,11 +1,10 @@
+
+# 🎬 Movie Recommendation System
 <p align="center">
   <img src="https://img.shields.io/badge/Django-5.2-green?logo=django" alt="Django">
   <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python" alt="Python">
   <img src="https://img.shields.io/badge/MySQL-Database-orange?logo=mysql" alt="MySQL">
 </p>
-
-# 🎬 Movie Recommendation System
-
 ---
 
 ## ✨ Overview
