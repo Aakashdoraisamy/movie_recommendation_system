@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Movie Logo" width="120"/>
   <img src="https://img.shields.io/badge/Django-5.2-green?logo=django" alt="Django">
   <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python" alt="Python">
   <img src="https://img.shields.io/badge/MySQL-Database-orange?logo=mysql" alt="MySQL">
