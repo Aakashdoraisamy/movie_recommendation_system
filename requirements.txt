@@ -1,0 +1,6 @@
+Django>=5.2.3
+python-dotenv>=1.1.1
+pandas>=2.2.2
+scikit-learn>=1.6.1
+PyMySQL>=1.1.1
+mysql-connector-python>=9.3.0

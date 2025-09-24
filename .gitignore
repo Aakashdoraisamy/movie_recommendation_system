@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Django
+*.log
+*.pot
+*.pyc
+*.sqlite3
+*.db
+
+# Environment
+venv/
+.env
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CSVs
+*.csv
+
+# Misc
+*.bak
+*.swp
+*.tmp
+
+# Coverage
+htmlcov/
+.coverage
+
+# Migrations
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/*.db
+
+# Ignore pickle files
+*.pkl

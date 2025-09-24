@@ -1,0 +1,107 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">🎬 Discover Amazing Movies</h1>
+        
+        <!-- Search Section -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Find Your Next Favorite Movie</h5>
+                <form method="GET" action="{% url 'movies:search' %}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" 
+                               placeholder="Search by title, genre, actor, or director...">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search me-1"></i>Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popular Movies -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="mb-3">🔥 Popular Movies</h2>
+        <div class="row">
+            {% for movie in popular_movies|slice:":8" %}
+            <div class="col-md-3 mb-4">
+                <div class="card movie-card">
+                    <div class="card-body">
+                        <h6 class="card-title">{{ movie.title }}</h6>
+                        <p class="text-muted small">{{ movie.get_year|default:"Unknown" }}</p>
+                        <div class="mb-2">
+                            <span class="rating-stars">
+                                {% with stars=movie.vote_average|floatformat:0 %}
+                                    {% for i in "12345"|make_list %}
+                                        {% if forloop.counter <= stars|add:0|stringformat:"d"|slice:":1" %}
+                                            <i class="fas fa-star"></i>
+                                        {% else %}
+                                            <i class="far fa-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endwith %}
+                            </span>
+                            <small class="text-muted">{{ movie.vote_average }}/10</small>
+                        </div>
+                        <div class="mb-2">
+                            {% for genre in movie.genres|slice:":2" %}
+                                <span class="genre-tag">{{ genre.name }}</span>
+                            {% endfor %}
+                        </div>
+                        <a href="{% url 'movies:detail' movie.id %}" class="btn btn-sm btn-outline-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Top Rated Movies -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="mb-3">⭐ Top Rated Movies</h2>
+        <div class="row">
+            {% for movie in top_rated|slice:":8" %}
+            <div class="col-md-3 mb-4">
+                <div class="card movie-card">
+                    <div class="card-body">
+                        <h6 class="card-title">{{ movie.title }}</h6>
+                        <p class="text-muted small">{{ movie.get_year|default:"Unknown" }}</p>
+                        <div class="mb-2">
+                            <span class="rating-stars">
+                                {% with stars=movie.vote_average|floatformat:0 %}
+                                    {% for i in "12345"|make_list %}
+                                        {% if forloop.counter <= stars|add:0|stringformat:"d"|slice:":1" %}
+                                            <i class="fas fa-star"></i>
+                                        {% else %}
+                                            <i class="far fa-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endwith %}
+                            </span>
+                            <small class="text-muted">{{ movie.vote_average }}/10</small>
+                        </div>
+                        <div class="mb-2">
+                            {% for genre in movie.genres|slice:":2" %}
+                                <span class="genre-tag">{{ genre.name }}</span>
+                            {% endfor %}
+                        </div>
+                        <a href="{% url 'movies:detail' movie.id %}" class="btn btn-sm btn-outline-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

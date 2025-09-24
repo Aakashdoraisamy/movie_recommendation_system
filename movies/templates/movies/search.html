@@ -1,0 +1,41 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Search Results for "{{ query }}"</h2>
+    <p>{{ total_results }} result{{ total_results|pluralize }} found.</p>
+    <div class="row">
+        {% for movie in page_obj %}
+        <div class="col-md-3 mb-4">
+            <div class="card movie-card">
+                <div class="card-body">
+                    <h6 class="card-title">{{ movie.title }}</h6>
+                    <p class="text-muted small">{{ movie.get_year|default:"Unknown" }}</p>
+                    <div class="mb-2">
+                        {% for genre in movie.genres|slice:":2" %}
+                            <span class="genre-tag">{{ genre.name }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="{% url 'movies:detail' movie.id %}" class="btn btn-sm btn-outline-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p>No movies found matching your search.</p>
+        </div>
+        {% endfor %}
+    </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Previous</a></li>
+            {% endif %}
+            <li class="page-item active"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?q={{ query }}&page={{ page_obj.next_page_number }}">Next</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}
