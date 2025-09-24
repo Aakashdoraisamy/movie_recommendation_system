@@ -5,7 +5,6 @@
   <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python" alt="Python">
   <img src="https://img.shields.io/badge/MySQL-Database-orange?logo=mysql" alt="MySQL">
 </p>
----
 
 ## ✨ Overview
 A modern, secure, and scalable web application for movie search, rating, and recommendations. Built with Django and powered by machine learning, it leverages real-world movie data and offers a professional user experience.
